@@ -2,6 +2,14 @@
 
 <%= render @user %>
 
+<% if @user_diaries.present? %>
+  <% @user_diaries.each do |diary| %>
+    <%= render diary %>
+  <% end %>
+<% else %>
+  <p>No diaries available for this user.</p>
+<% end %>
+
 <% if current_user.id == @user.id %>
   <div>
     <%= link_to "Edit this user", edit_user_path(@user) %>

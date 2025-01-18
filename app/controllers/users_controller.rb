@@ -14,6 +14,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    # ------生成AIが作成------
+    @user_diaries = @user.diaries
+    # ------生成AIが作成------
   end
 
   private
