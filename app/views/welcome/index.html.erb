@@ -2,6 +2,8 @@
 
 <% if user_signed_in? %>
   <p>You are <%= current_user.id %></p>
+  <!-- 生成AIが作成 ユーザー情報の編集への導線 -->
+  <%= link_to '編集', edit_user_path(current_user) %>
   <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= button_to 'Login', new_user_session_path %>
