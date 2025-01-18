@@ -22,6 +22,8 @@ class DiariesController < ApplicationController
   # POST /diaries or /diaries.json
   def create
     @diary = Diary.new(diary_params)
+    # 生成AIが作成。日記のユーザーIDを現在ログインしているユーザーのIdにする
+    @diary.user_id = current_user.id
 
     respond_to do |format|
       if @diary.save
