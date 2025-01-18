@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @user %>
+
+<% if current_user.id == @user.id %>
+  <div>
+    <%= link_to "Edit this user", edit_user_path(@user) %>
+  </div>
+<% end %>

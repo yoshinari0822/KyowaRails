@@ -2,8 +2,10 @@
 
 <h1>Editing user</h1>
 
-<%= render "form", user: @user %>
+<% if current_user.id == @user.id %>
+  <%= render "form", user: @user %>
+<% else %>
+  <p>ユーザーエラー</p>
+<% end %>
 
 <br>
-
-
