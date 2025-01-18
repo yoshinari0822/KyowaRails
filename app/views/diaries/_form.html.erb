@@ -1,0 +1,32 @@
+<%= form_with(model: diary) do |form| %>
+  <% if diary.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+
+      <ul>
+        <% diary.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :text, style: "display: block" %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div>
+    <%= form.label :tension, style: "display: block" %>
+    <%= form.number_field :tension %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
