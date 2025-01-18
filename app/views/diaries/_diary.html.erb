@@ -1,17 +1,65 @@
-<div id="<%= dom_id diary %>">
-  <p>
-    <strong>User:</strong>
-    <%= diary.user_id %>
-  </p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .diary {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
 
-  <p>
-    <strong>Text:</strong>
-    <%= diary.text %>
-  </p>
 
-  <p>
-    <strong>Tension:</strong>
-    <%= diary.tension %>
-  </p>
+        .tension-0 {
+            background: linear-gradient(to bottom right,
+                #e0f1e7, #d4ede3, #c8e9df, #bce5db,
+                #b0e1d7, #a4ddd3, #98d9cf, #8cd5cb,
+                #80d1c7, #74cdc3, #68c9bf, #5cc5bb);
+        }
 
-</div>
+        .tension-1 {
+            background: linear-gradient(to bottom right,
+                #ffecb3, #ffdea9, #ffd0a3, #ffc29f, #ffb59e);
+        }
+
+        .tension-2 {
+            background: linear-gradient(to bottom right,
+                #ffdaec, #fcc4d9, #f9aec3, #f598aa, #ef828e);
+        }
+
+        .text {
+
+            color: black;
+        }
+
+        .diary {
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          color: white;
+          text-align: center;
+          margin: 16px;
+          width: 50%;
+        }
+    </style>
+    <title>Diary Entry</title>
+</head>
+<body>
+  <!-- 日記の内容 -->
+
+    <div class="diary tension-<%= diary.tension %>">
+        <p class="text">
+          <strong>
+            <%= diary.text %>
+          </strong>
+        </p>
+
+        <p class="text">
+            <%= diary.user.icon %>
+            <%= diary.user.name %>
+        </p>
+    </div>
+</body>
+</html>

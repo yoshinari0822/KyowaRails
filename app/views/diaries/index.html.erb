@@ -5,11 +5,11 @@
 <h1>Diaries</h1>
 
 <div id="diaries">
-  <% @diaries.each do |diary| %>
-    <%= render diary %>
-    <p>
-      <%= link_to "Show this diary", diary %>
-    </p>
+  <% @diaries_by_date.each do |date, diaries| %>
+    <h2><%= date.strftime("%Y-%m-%d") %></h2>
+    <% diaries.each do |diary| %>
+      <%= render diary %>
+    <% end %>
   <% end %>
 </div>
 
