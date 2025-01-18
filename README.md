@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+bundle install; bundle exec rake assets:precompile; bundle exec rake assets:clean;
