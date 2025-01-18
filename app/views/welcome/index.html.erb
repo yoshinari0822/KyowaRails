@@ -1,0 +1,8 @@
+<h1>Kyowaを始める</h1>
+
+<% if user_signed_in? %>
+  <p>You are <%= current_user.id %></p>
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= button_to 'Login', new_user_session_path %>
+<% end %>

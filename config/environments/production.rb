@@ -102,4 +102,14 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sfc.keio.ac.jp',
+    port: 587,
+    domain: 'sfc.keio.ac.jp',
+    user_name: ENV['MAILER_USER'],
+    password: ENV['MAILER_PASSWORD'],
+    authentication: :login
+  }
 end
