@@ -5,6 +5,8 @@
 
 <% if current_user.id == @diary.user_id %>
   <%= render "form", diary: @diary %>
+
+  <%= button_to "削除", @diary, method: :delete %>
 <% else %>
   他のユーザーの日記は修正できません
 <% end %>
@@ -13,5 +15,5 @@
 <br>
 
 <div>
-  <%= link_to "戻る", user_path %>
+  <%= link_to "戻る", current_user %>
 </div>

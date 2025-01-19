@@ -34,9 +34,13 @@ class DiariesController < ApplicationController
     # 生成AIが作成。日記のユーザーIDを現在ログインしているユーザーのIdにする
     @diary.user_id = current_user.id
 
+    if @diary.tension == nil
+      @diary.tension = "1"
+    end
+
     respond_to do |format|
       if @diary.save
-        format.html { redirect_to @diary, notice: "Diary was successfully created." }
+        format.html { redirect_to diaries_path, notice: "" }
         format.json { render :show, status: :created, location: @diary }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,7 +53,7 @@ class DiariesController < ApplicationController
   def update
     respond_to do |format|
       if @diary.update(diary_params)
-        format.html { redirect_to current_user, notice: "Diary was successfully updated." }
+        format.html { redirect_to current_user, notice: "" }
         format.json { render :show, status: :ok, location: @diary }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,7 +67,7 @@ class DiariesController < ApplicationController
     @diary.destroy!
 
     respond_to do |format|
-      format.html { redirect_to diaries_path, status: :see_other, notice: "Diary was successfully destroyed." }
+      format.html { redirect_to current_user, status: :see_other, notice: "" }
       format.json { head :no_content }
     end
   end

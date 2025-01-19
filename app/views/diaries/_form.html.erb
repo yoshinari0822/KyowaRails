@@ -20,10 +20,22 @@
 
   <div>
     <%= form.label :tension, style: "display: block" %>
-    <%= form.number_field :tension %>
+    <% ["0", "1", "2"].each do |value| %>
+      <%= form.radio_button :tension, value %>
+      <% if value == "0" %>
+        <%= form.label :tension, "😞"%>
+      <% elsif value == "1" %>
+        <%= form.label :tension, "🙂"%>
+      <% else value == "2" %>
+        <%= form.label :tension, "😁"%>
+      <% end %>
+    <% end %>
   </div>
 
+
   <div>
-    <%= form.submit %>
+    <% if :text != nil && :tension != nil %>
+      <%= form.submit %>
+    <% end %>
   </div>
 <% end %>
