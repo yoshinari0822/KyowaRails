@@ -37,11 +37,14 @@
           margin: 16px;
           width: 50%;
         }
+        .diary_wrapper{
+          text-decoration: none;
+        }
     </style>
     <title>Diary Entry</title>
 </head>
     <!-- 生成AIが作成 ユーザーのページに飛ぶ -->
-    <%= link_to user_path(diary.user), id: dom_id(diary) do %>
+    <%= link_to user_path(diary.user), id: dom_id(diary), class: "diary_wrapper" do %>
     <!-- -->
     <!-- 生成AIが作成 日記の色をtensionによって変更に飛ぶ -->
     <div class="diary tension-<%= diary.tension %>">
@@ -54,7 +57,12 @@
 
         <p class="text">
             <%= diary.user.icon %>
-            <%= diary.user.name %>
+
+            <% if diary.user.name == nil %>
+                ❓未設定
+            <% else %>
+                <%= diary.user.name %>
+            <% end %>
         </p>
     </div>
 <% end %>
