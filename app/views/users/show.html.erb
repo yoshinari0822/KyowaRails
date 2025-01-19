@@ -1,17 +1,56 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        .diary {
+          display: flex;
+          align-items: center;
+          padding: 20px;
+          border-bottom: 1px solid #333;
+          text-decoration: none;
+        }
+        .diary_text{
+          font-size:x-large;
+          padding-left: 20px;
+          color: black;
+        }
 
-<%= render @user %>
 
-<% if @user_diaries.present? %>
-  <% @user_diaries.each do |diary| %>
-    <%= render diary %>
-  <% end %>
-<% else %>
-  <p>No diaries available for this user.</p>
-<% end %>
+        .tension-0 {
+            color: #5cc5bb;
+        }
 
-<% if current_user.id == @user.id %>
-  <div>
-    <%= link_to "Edit this user", edit_user_path(@user) %>
-  </div>
-<% end %>
+        .tension-1 {
+            color: #ffb59e;
+        }
+
+        .tension-2 {
+            color: #ef828e;
+        }
+      </style>
+  </head>
+  <body>
+    <%= render @user %>
+
+    <% if @user_diaries.present? %>
+      <div class="diary"></div>
+      <% @user_diaries.each do |diary| %>
+        <!-- 生成AIが作成。日記をクリックしたら編集のページになる -->
+        <%= link_to edit_diary_path(diary), class: "diary tension-#{diary.tension}" do %>
+        <!-- 生成AIが作成。日記をクリックしたら編集のページになる -->
+          <div>
+            <%= diary.created_at.strftime("%Y/%m/%d") %>
+          </div>
+          <strong class="diary_text">
+            <%= diary.text %>
+          </strong>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>No diaries available for this user.</p>
+    <% end %>
+    <%= link_to "みんなの日記に戻る", diaries_path %>
+  </body>
+</html>

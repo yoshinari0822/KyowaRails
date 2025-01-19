@@ -1,13 +1,61 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-  <p>
-    <strong>Icon:</strong>
-    <%= user.icon %>
-  </p>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        .wrapper{
+          display: flex;
+          align-items: center;
+        }
+        .icon {
+          font-size:24px;
+          width: 42px;
+          height: 42px;
+          background: green;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #f0f0f0;
+          margin-right: 12px
+        }
+        .user-icon-wrapper{
+          display: flex;
+          align-items: center;
+        }
+        .user-name{
+          font-size: 24px;
+          margin-right: 8px;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="<%= dom_id user %>" class="wrapper" >
+      <div class="user-icon-wrapper">
+        <div class="icon">
+          <%= user.icon %>
+        </div>
+        <span class="user-name">
+          <strong>
 
+          <% if current_user.id == @user.id %>
+            <%= user.name %>
+          <% else %>
+            未設定
+          <% end %>
+          </strong>
+        </span>
+      </div>
 
-</div>
+      <% if current_user.id == @user.id %>
+        <div>
+          <%= link_to "", edit_user_path(@user) %><%= link_to edit_user_path(@user) do %>
+            <%= image_tag 'settings.svg', alt: 'Settings Icon', size: '24x24' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>
 

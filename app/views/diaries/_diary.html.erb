@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .diary {
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            color: white;
-        }
 
 
         .tension-0 {
@@ -49,7 +43,9 @@
     <!-- 生成AIが作成 ユーザーのページに飛ぶ -->
     <%= link_to user_path(diary.user), id: dom_id(diary) do %>
     <!-- -->
+    <!-- 生成AIが作成 日記の色をtensionによって変更に飛ぶ -->
     <div class="diary tension-<%= diary.tension %>">
+    <!-- -->
         <p class="text">
           <strong>
             <%= diary.text %>

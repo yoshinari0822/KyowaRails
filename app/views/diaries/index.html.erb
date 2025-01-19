@@ -2,9 +2,9 @@
 
 <% content_for :title, "Diaries" %>
 
-<h1>Diaries</h1>
+<h1>みんなの日記</h1>
 
-<div id="diaries">
+<div id="みんなの日記">
   <% @diaries_by_date.each do |date, diaries| %>
     <h2><%= date.strftime("%Y-%m-%d") %></h2>
     <% diaries.each do |diary| %>

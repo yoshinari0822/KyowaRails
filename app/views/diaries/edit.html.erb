@@ -1,12 +1,17 @@
 <% content_for :title, "Editing diary" %>
 
-<h1>Editing diary</h1>
 
-<%= render "form", diary: @diary %>
+<h1>日記を編集</h1>
+
+<% if current_user.id == @diary.user_id %>
+  <%= render "form", diary: @diary %>
+<% else %>
+  他のユーザーの日記は修正できません
+<% end %>
+
 
 <br>
 
 <div>
-  <%= link_to "Show this diary", @diary %> |
-  <%= link_to "Back to diaries", diaries_path %>
+  <%= link_to "戻る", user_path %>
 </div>

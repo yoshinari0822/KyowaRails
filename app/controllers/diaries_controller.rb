@@ -6,7 +6,7 @@ class DiariesController < ApplicationController
   def index
     if params[:user_id].present?
       user_id = params[:user_id]
-      @user_diaries = Diary.where(user_id: user_id).order(created_at: :desc)
+      @user_diaries = Diary.where(user_id: user_id).order(created_at: :asc)
     else
       @user_diaries = Diary.none
     end
@@ -49,7 +49,7 @@ class DiariesController < ApplicationController
   def update
     respond_to do |format|
       if @diary.update(diary_params)
-        format.html { redirect_to @diary, notice: "Diary was successfully updated." }
+        format.html { redirect_to current_user, notice: "Diary was successfully updated." }
         format.json { render :show, status: :ok, location: @diary }
       else
         format.html { render :edit, status: :unprocessable_entity }
