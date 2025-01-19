@@ -23,19 +23,17 @@
     <% ["0", "1", "2"].each do |value| %>
       <%= form.radio_button :tension, value %>
       <% if value == "0" %>
-        <%= form.label :tension, "😞"%>
+        <%= form.label :tension, "😁"%>
       <% elsif value == "1" %>
         <%= form.label :tension, "🙂"%>
       <% else value == "2" %>
-        <%= form.label :tension, "😁"%>
+        <%= form.label :tension, "😞"%>
       <% end %>
     <% end %>
   </div>
 
 
   <div>
-    <% if :text != nil && :tension != nil %>
-      <%= form.submit %>
-    <% end %>
+    <%= form.submit %>
   </div>
 <% end %>
