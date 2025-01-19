@@ -29,11 +29,35 @@
         .tension-2 {
             color: #ef828e;
         }
+
+        .info_wrapper {
+
+        }
       </style>
   </head>
   <body>
     <%= render @user %>
 
+
+    <div class="info_wrapper">
+      <div>
+        合計：
+        <%= @user_diaries.length %>
+      </div>
+        <!--生成AIが作成 それぞれのテンションの数 -->
+      <div>
+        😁：
+        <%= @user_diaries.select { |diary| diary.tension == 0 }.length %>
+      </div>
+      <div>
+        🙂：
+        <%= @user_diaries.select { |diary| diary.tension == 1 }.length %>
+      </div>
+      <div>😞：
+        <%= @user_diaries.select { |diary| diary.tension == 2 }.length %>
+      </div>
+        <!-- 生成AIが作成 -->
+    </div>
     <% if @user_diaries.present? %>
       <div class="diary"></div>
       <% @user_diaries.each do |diary| %>
