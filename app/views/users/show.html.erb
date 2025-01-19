@@ -52,5 +52,6 @@
       <p>No diaries available for this user.</p>
     <% end %>
     <%= link_to "みんなの日記に戻る", diaries_path %>
+    <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
   </body>
 </html>
