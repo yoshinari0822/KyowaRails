@@ -39,7 +39,7 @@
         <span class="user-name">
           <strong>
 
-          <% if current_user.id == @user.id %>
+          <% if @user.id != nil %>
             <%= user.name %>
           <% else %>
             未設定
